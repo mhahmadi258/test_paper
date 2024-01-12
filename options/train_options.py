@@ -11,7 +11,6 @@ class TrainOptions:
 	def initialize(self):
 		self.parser.add_argument('--exp_dir', type=str, help='Path to experiment output directory')
 		self.parser.add_argument('--dataset_type', default='ffhq_encode', type=str, help='Type of dataset/experiment to run')
-		self.parser.add_argument('--training_stage', default=1, type=int, help='Training the E2Style encoder for stage i')
 		self.parser.add_argument('--is_training', default=True, type=bool, help='Training or testing')
 		self.parser.add_argument('--input_nc', default=3, type=int, help='Number of input image channels to the E2Style encoder')
 		self.parser.add_argument('--label_nc', default=0, type=int, help='Number of input label channels to the E2Style encoder')
@@ -37,7 +36,7 @@ class TrainOptions:
 		self.parser.add_argument('--l2_lambda_crop', default=0, type=float, help='L2 loss multiplier factor for inner image region')
 
 		self.parser.add_argument('--stylegan_weights', default=model_paths['stylegan_ffhq'], type=str, help='Path to StyleGAN model weights')
-		self.parser.add_argument('--checkpoint_path', default=None, type=str, help='Path to E2Style model checkpoint')
+		self.parser.add_argument('--checkpoint_path', default=None, type=str, help='Path to checkpoint')
 
 		self.parser.add_argument('--max_steps', default=500000, type=int, help='Maximum number of training steps')
 		self.parser.add_argument('--image_interval', default=100, type=int, help='Interval for logging train images during training')

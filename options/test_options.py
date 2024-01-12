@@ -10,8 +10,7 @@ class TestOptions:
 	def initialize(self):
 		# arguments for inference script
 		self.parser.add_argument('--exp_dir', type=str, help='Path to experiment output directory')
-		self.parser.add_argument('--checkpoint_path', default=None, type=str, help='Path to E2Style model checkpoint')
-		self.parser.add_argument('--stage', default=1, type=int, help='Results of stage i')
+		self.parser.add_argument('--checkpoint_path', default=None, type=str, help='Path to checkpoint')
 		self.parser.add_argument('--is_training', default=False, type=bool, help='Training or testing')
 		self.parser.add_argument('--data_path', type=str, default='gt_images', help='Path to directory of images to evaluate')
 		self.parser.add_argument('--couple_outputs', action='store_true', help='Whether to also save inputs + outputs side-by-side')

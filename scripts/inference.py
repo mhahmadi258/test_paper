@@ -16,7 +16,7 @@ from configs import data_configs
 from datasets.inference_dataset import InferenceDataset
 from utils.common import tensor2im, log_input_image
 from options.test_options import TestOptions
-from models.e2style import E2Style
+from models.face_frontalizer import FaceFrontalizier
 
 
 def run():
@@ -44,7 +44,7 @@ def run():
 		opts['learn_in_w'] = False
 	opts = Namespace(**opts)
 
-	net = E2Style(opts)
+	net = FaceFrontalizier(opts)
 	net.eval()
 	net.cuda()
 

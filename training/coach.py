@@ -16,7 +16,7 @@ from criteria import id_loss, w_norm
 from configs import data_configs
 from datasets.images_dataset import ImagesDataset
 from criteria.lpips.lpips import LPIPS
-from models.e2style import E2Style
+from models.face_frontalizer import FaceFrontalizier
 from training.ranger import Ranger
 
 
@@ -30,7 +30,7 @@ class Coach:
 		self.opts.device = self.device
 
 		# Initialize network
-		self.net = E2Style(self.opts).to(self.device)
+		self.net = FaceFrontalizier(self.opts).to(self.device)
 
 		# Initialize loss
 		if self.opts.lpips_lambda > 0:
@@ -73,7 +73,7 @@ class Coach:
 
 	def train(self):
 		self.net.eval()
-		self.net.encoder_firststage.train()
+		self.net.encoder.train()
 
 		while self.global_step < self.opts.max_steps:
 			for batch_idx, batch in enumerate(self.train_dataloader):
@@ -132,14 +132,14 @@ class Coach:
 
 			# For first step just do sanity test on small amount of data
 			if self.global_step == 0 and batch_idx >= 4:
-				self.net.encoder_firststage.train()
+				self.net.encoder.train()
 				return None  # Do not log, inaccurate in first batch
 
 		loss_dict = train_utils.aggregate_loss_dict(agg_loss_dict)
 		self.log_metrics(loss_dict, prefix='test')
 		self.print_metrics(loss_dict, prefix='test')
 
-		self.net.encoder_firststage.train()
+		self.net.encoder.train()
 		return loss_dict
 
 	def checkpoint_me(self, loss_dict, is_best):
@@ -154,7 +154,7 @@ class Coach:
 				f.write('Step - {}, \n{}\n'.format(self.global_step, loss_dict))
 
 	def configure_optimizers(self):
-		params = list(self.net.encoder_firststage.parameters())
+		params = list(self.net.encoder.parameters())
 		if self.opts.train_decoder:
 			params += list(self.net.decoder.parameters())
 		else:

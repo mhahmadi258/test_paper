@@ -21,10 +21,9 @@ class AdapterBlock(Module):
         out = self.adapter(x).view(-1, self.num_module, 512)
         return w + out
 
-class BackboneEncoderFirstStage(Module):
+class EfficientEncoder(Module):
     def __init__(self, num_layers, mode='ir', opts=None):
-        super(BackboneEncoderFirstStage, self).__init__()
-        # print('Using BackboneEncoderFirstStage')
+        super(EfficientEncoder, self).__init__()
         assert num_layers in [50, 100, 152], 'num_layers should be 50,100, or 152'
         assert mode in ['ir', 'ir_se'], 'mode should be ir or ir_se'
         blocks = get_blocks(num_layers)
