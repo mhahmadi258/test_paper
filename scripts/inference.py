@@ -42,6 +42,7 @@ def run():
 	opts.update(vars(test_opts))
 	if 'learn_in_w' not in opts:
 		opts['learn_in_w'] = False
+	opts['dataset_type'] = 'frontalization'
 	opts = Namespace(**opts)
 
 	net = FaceFrontalizier(opts)
