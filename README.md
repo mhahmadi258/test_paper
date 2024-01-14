@@ -17,39 +17,25 @@ allow face frontalization for both single-image and multi-image.
 ## Table of Contents
   * [Description](#description)
   * [Table of Contents](#table-of-contents)
-  * [Recent Updates](#recent-updates)
   * [Applications](#applications)
-    + [StyleGAN Encoding](#stylegan-encoding)
-    + [Face Frontalization](#face-frontalization)
-    + [Conditional Image Synthesis](#conditional-image-synthesis)
-    + [Super Resolution](#super-resolution)
+    + [Single-Image Face Frontalization](#single-image-face-frontalization)
+    + [Multi-Image Face Frontalization](#multi-image-face-frontalization)
   * [Getting Started](#getting-started)
     + [Prerequisites](#prerequisites)
     + [Installation](#installation)
     + [Inference Notebook](#inference-notebook)
     + [Pretrained Models](#pretrained-models)
+    + [Dataset](#dataset)
   * [Training](#training)
     + [Preparing your Data](#preparing-your-data)
-    + [Training pSp](#training-psp)
-      - [Training the pSp Encoder](#training-the-psp-encoder)
-      - [Frontalization](#frontalization)
-      - [Sketch to Face](#sketch-to-face)
-      - [Segmentation Map to Face](#segmentation-map-to-face)
-      - [Super Resolution](#super-resolution-1)
+    + [Training models](#training-models)
+      - [Training the Single-Image Encoder](#training-the-single-image-encoder)
+      - [Training the Multi-Image Encoder](#training-the-multi-image-encoder)
     + [Additional Notes](#additional-notes)
-    + [Weights & Biases Integration](#weights--biases-integration)
   * [Testing](#testing)
     + [Inference](#inference)
-    + [Multi-Modal Synthesis with Style-Mixing](#multi-modal-synthesis-with-style-mixing)
-    + [Computing Metrics](#computing-metrics)
-  * [Additional Applications](#additional-applications)
-    + [Toonify](#toonify)
-  * [Repository structure](#repository-structure)
-  * [TODOs](#todos)
-  * [Credits](#credits)
-  * [Inspired by pSp](#inspired-by-psp)
-  * [pSp in the Media](#psp-in-the-media)
-  * [Citation](#citation)
+  * [Acknowledgements](#acknowledgements)
+  <!-- * [Citation](#citation) -->
   
 
 ## Applications
@@ -60,7 +46,7 @@ Here, we use single image to reconstruct the frontal-view face.
 </p>
 
 
-### Multi-Input Face Frontalization 
+### Multi-Image Face Frontalization 
 Here, we use multiple images, considered as frames of a short video, to reconstruct the frontal-view face.
 <p align="center">
 <img src="docs/seq_results.png" width="800px"/>
