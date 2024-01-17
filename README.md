@@ -1,7 +1,7 @@
 # Face-frontalization-in-image-sequences-using-GAN-Inversion
 
 
-<a href="http://colab.research.google.com/github/eladrich/pixel2style2pixel/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=22.5></a>  
+<!-- <a href="http://colab.research.google.com/github/eladrich/pixel2style2pixel/blob/master/notebooks/inference_playground.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" height=22.5></a>   -->
 
 > Nowadays, with the widespread use of cameras across various domains and the significant increase in the availability of facial images, their processing has gained considerable importance. The quality of an image and its complexity, particularly in terms of pose variation, can significantly influence these processes. To tackle the challenge of pose variation, many approaches have been proposed for face frontalization. However, due to their reliance on heavy architectures and complicated training procedures, these approaches often lead to low-quality image reconstruction. Another drawback is that despite the availability of multiple images as frames in a video— which inherently contain more information— these methods reconstruct the frontal-view image by processing only a single input image. We address all of the above obstacles by proposing a novel approach that is capable of reconstructing the frontal-view image with photorealistic quality. For this purpose, we first present an innovative solution to provide a diverse dataset with high quality. Furthermore, we propose a novel single-image method with considerably fewer trainable parameters for face frontalization by incorporating the GAN inversion technique with a transfer learning approach. Following this, by employing and extending this method, we introduce a new approach for processing sequences of images, capable of leveraging both the independent and collective insights from all frames. Lastly, through the comprehensive analysis of our methods and comparing them with previous approaches, we demonstrate their effective capability to reconstruct frontal-view images with photorealistic quality.
 
@@ -70,9 +70,9 @@ $ pip install matplotlib scipy opencv-python pillow scikit-image tqdm tensorflow
 git clone https://github.com/mhahmadi258/Face-frontalization-in-image-sequences-using-GAN-Inversion.git
 cd Face-frontalization-in-image-sequences-using-GAN-Inversion
 ```
-### Inference Notebook
+<!-- ### Inference Notebook
 To help visualize our proposed method on single-image and multi-image and to help you get started, we provide a Jupyter notebook found in `notebooks/inference_playground.ipynb`.   
-The notebook will download the necessary pretrained models and run inference on the images found in `notebooks/images`.  
+The notebook will download the necessary pretrained models and run inference on the images found in `notebooks/images`.   -->
 
 ### Pretrained Models
 Please download the pre-trained models from the following links. Each model contains the entire architecture, including the encoder, decoder and adapter blockes weights.
