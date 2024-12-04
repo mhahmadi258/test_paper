@@ -40,21 +40,21 @@ class EfficientEncoder(Module):
                                          Flatten(),
                                          Linear(256 * 7 * 7, 512 * 9))
         
-        self.adapter_layer_3 = AdapterBlock(256, 9)
+        # self.adapter_layer_3 = AdapterBlock(256, 9)
         
         self.output_layer_4 = Sequential(BatchNorm2d(128),
                                          torch.nn.AdaptiveAvgPool2d((7, 7)),
                                          Flatten(),
                                          Linear(128 * 7 * 7, 512 * 5))
         
-        self.adapter_layer_4 = AdapterBlock(128, 5)
+        # self.adapter_layer_4 = AdapterBlock(128, 5)
         
         self.output_layer_5 = Sequential(BatchNorm2d(64),
                                          torch.nn.AdaptiveAvgPool2d((7, 7)),
                                          Flatten(),
                                          Linear(64 * 7 * 7, 512 * 4))
         
-        self.adapter_layer_5 = AdapterBlock(64, 4)
+        # self.adapter_layer_5 = AdapterBlock(64, 4)
         
         modules = []
         for block in blocks:
@@ -70,15 +70,15 @@ class EfficientEncoder(Module):
         for l in self.modulelist[:3]:
           x = l(x)
         lc_part_4 = self.output_layer_5(x).view(-1, 4, 512)
-        lc_part_4 = self.adapter_layer_5(x, lc_part_4)
+        # lc_part_4 = self.adapter_layer_5(x, lc_part_4)
         for l in self.modulelist[3:7]:
           x = l(x)
         lc_part_3 = self.output_layer_4(x).view(-1, 5, 512)
-        lc_part_3 = self.adapter_layer_4(x, lc_part_3)
+        # lc_part_3 = self.adapter_layer_4(x, lc_part_3)
         for l in self.modulelist[7:21]:
           x = l(x)
         lc_part_2 = self.output_layer_3(x).view(-1, 9, 512)
-        lc_part_2 = self.adapter_layer_3(x, lc_part_2)
+        # lc_part_2 = self.adapter_layer_3(x, lc_part_2)
 
         x = torch.cat((lc_part_2, lc_part_3, lc_part_4), dim=1)
         return x

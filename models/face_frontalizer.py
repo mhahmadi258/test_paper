@@ -20,8 +20,8 @@ class FaceFrontalizier(nn.Module):
 		self.decoder = Generator(1024, 512, 8)
 		self.face_pool = torch.nn.AdaptiveAvgPool2d((256, 256))
 		self.load_weights()
-		self.freeze_encoder()
-		self.freeze_decoder()
+		# self.freeze_encoder()
+		# self.freeze_decoder()
   
   
 	def freeze_decoder(self):
