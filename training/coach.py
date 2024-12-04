@@ -1,4 +1,5 @@
 import os
+import time
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -80,10 +81,17 @@ class Coach:
 				self.optimizer.zero_grad()
 				x, y = batch
 				x, y = x.to(self.device).float(), y.to(self.device).float()
+				tic = time.time()
 				y_hat, latent = self.net.forward(x, return_latents=True)
+				tac = time.time()
 				loss, loss_dict, id_logs = self.calc_loss(x, y, y_hat, latent)
 				loss.backward()
 				self.optimizer.step()
+				toc = time.time()
+
+				print(f'forward time: {tac - tic}')
+				print(f'backward time: {toc - tac}')
+				print(f'overal time: {toc - tic}')
 
 				# Logging related
 				if self.global_step % self.opts.image_interval == 0 or (
